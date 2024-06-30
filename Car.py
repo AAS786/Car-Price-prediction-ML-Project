@@ -1,16 +1,11 @@
 import pandas as pd
-import numpy as np
 import pickle as pk
 import streamlit as st
-import os
 import warnings
 warnings.filterwarnings("ignore")
 
-
-
 # Load the model
 model = pk.load(open('Car_Sales.sav','rb'))
-
 
 # Load the car details data
 cars_data = pd.read_csv('Cardetails.csv')
@@ -19,6 +14,7 @@ cars_data = pd.read_csv('Cardetails.csv')
 def get_brand_name(car_name):
     car_name = car_name.split(' ')[0]
     return car_name.strip()
+
 cars_data['name'] = cars_data['name'].apply(get_brand_name)
 
 # CSS to set the background image
@@ -60,8 +56,8 @@ def main():
         engine = st.slider('**Engine CC**', 700, 5000)
     with col2:
         max_power = st.slider('**Max Power**', 0, 200)
-    #with col1:
-    seats = st.slider('**No of Seats**', 5, 10)
+    with col1:
+        seats = st.slider('**No of Seats**', 2, 10)
     
     # Predict the car price
     if st.button("🚗 Predict 🚗"):
@@ -79,14 +75,12 @@ def main():
                                           'Mitsubishi', 'Audi', 'Volkswagen', 'BMW', 'Nissan', 'Lexus',
                                           'Jaguar', 'Land', 'MG', 'Volvo', 'Daewoo', 'Kia', 'Fiat', 'Force',
                                           'Ambassador', 'Ashok', 'Isuzu', 'Opel'],
-                                         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-                                         inplace=True)
+                                         list(range(1, 32)), inplace=True)
         car_price = model.predict(input_data_model)
         
         price_in_lakhs = car_price[0] / 100000
         price_in_lakhs_str = f"{price_in_lakhs:,.2f}"
         st.markdown(f'<h2 style="color: #32CD32;">💸 Car Price is going to be ₹{price_in_lakhs_str} Lakhs 💸</h2>', unsafe_allow_html=True)
         
-    
 if __name__ == '__main__':
     main()
