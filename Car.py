@@ -7,7 +7,8 @@ warnings.filterwarnings("ignore")
 # Load the model
 model = pk.load(open('Car_Sales.sav','rb'))
 
-
+# Load the car details data
+cars_data = pd.read_csv('Cardetails.csv')
 
 # Extract car brand names
 def get_brand_name(car_name):
