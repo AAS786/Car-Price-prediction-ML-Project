@@ -11,14 +11,19 @@ warnings.filterwarnings("ignore")
 # Load the model
 model = pk.load(open('Car_Sales.sav','rb'))
 
-
-
-# CSS to set the background image
+# CSS to set the background image and style the app content
 page_bg_img = '''
 <style>
 body {
 background-image: url("https://i.postimg.cc/wvN8crTn/1-ftn-M93-Qhl-S0-A7-I55-Qegbr-A.jpg");
 background-size: cover;
+background-attachment: fixed;
+}
+
+.stApp {
+background: rgba(255, 255, 255, 0.85); /* White background with some opacity */
+border-radius: 10px;
+padding: 10px;
 }
 </style>
 '''
@@ -26,9 +31,13 @@ background-size: cover;
 # Apply the background image
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+
+
+
+
 # Define the main function for the Streamlit app
 def main():
-    st.markdown("<h1 style='text-align: center; color: #4B0082;'>🚗Car Price Prediction ML Model🚗</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #4B0082; text-decoration: underline;'>🚗Car Price Prediction ML Model🚗</h1>", unsafe_allow_html=True)
     
     # Collect user inputs
     col1, col2 = st.columns(2)
@@ -39,7 +48,7 @@ def main():
                                           'Jaguar', 'Land', 'MG', 'Volvo', 'Daewoo', 'Kia', 'Fiat', 'Force',
                                           'Ambassador', 'Ashok', 'Isuzu', 'Opel'])
     with col2:
-        year = st.slider('**Car Manufactured Year**', 1994, 2024)
+        year = st.slider('***Car Manufactured Year***', 1994, 2024)
     with col1:
         km_driven = st.slider('**No of kms Driven**', 11, 200000)
     with col2:
