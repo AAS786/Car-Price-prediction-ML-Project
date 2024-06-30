@@ -1,6 +1,6 @@
 # Car-Price-prediction
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://car-price-predictionappio-ltg6pxbzeuxvxcatxmr3am.streamlit.app/)
+[![Click Here](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://car-price-predictionappio-ltg6pxbzeuxvxcatxmr3am.streamlit.app/)
 
 
 
